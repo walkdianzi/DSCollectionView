@@ -31,9 +31,9 @@
     return self;
 }
 
--(void)setDsCollectionDelegate:(id<DSCollectionViewIndexDelegate>)dsCollectionDelegate{
-    
-    _collectionDelegate = dsCollectionDelegate;
+-(void)setCollectionDelegate:(id<DSCollectionViewIndexDelegate>)collectionDelegate{
+
+    _collectionDelegate = collectionDelegate;
     _isLayedOut = NO;  //如果为yes就是超过此layer的部分都裁剪掉，使用圆角的时候常用到
     [self layoutSubviews];
 }
