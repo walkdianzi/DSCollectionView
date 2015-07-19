@@ -42,6 +42,8 @@
         _flotageLabel = [[UILabel alloc] initWithFrame:(CGRect){(self.bounds.size.width - 64 ) / 2,(self.bounds.size.height - 64) / 2,64,64}];
         _flotageLabel.backgroundColor = [UIColor blackColor];
         _flotageLabel.hidden = YES;
+        [_flotageLabel.layer  setCornerRadius:32];
+        _flotageLabel.layer.masksToBounds = YES;
         _flotageLabel.textAlignment = NSTextAlignmentCenter;
         _flotageLabel.textColor = [UIColor whiteColor];
         [self addSubview:_flotageLabel];
@@ -90,17 +92,19 @@
 
 -(void)collectionViewIndexTouchesBegan:(DSCollectionViewIndex *)collectionViewIndex{
     
+    _flotageLabel.alpha = 1;
     _flotageLabel.hidden = NO;
 }
 
 -(void)collectionViewIndexTouchesEnd:(DSCollectionViewIndex *)collectionViewIndex{
     
-    CATransition *animation = [CATransition animation];
-    animation.type = kCATransitionFade;
-    animation.duration = 0.4;
-    [_flotageLabel.layer addAnimation:animation forKey:nil];
+    void (^animation)() = ^{
+        _flotageLabel.alpha = 0;
+    };
     
-    _flotageLabel.hidden = YES;
+    [UIView animateWithDuration:0.4 animations:animation completion:^(BOOL finished) {
+        _flotageLabel.hidden = YES;
+    }];
 }
 
 @end
