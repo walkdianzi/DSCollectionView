@@ -80,7 +80,7 @@
     _collectionViewIndex.collectionDelegate = self;
 }
 
-#pragma mark- 
+#pragma mark- DSCollectionViewIndexDelegate
 
 -(void)collectionViewIndex:(DSCollectionViewIndex *)collectionViewIndex didselectionAtIndex:(NSInteger)index withTitle:(NSString *)title{
     
